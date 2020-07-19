@@ -31,13 +31,15 @@ public class ItemPickUpSetting implements Listener {
                     }
 
                     if (itemPickUpPlayer.contains(player.getName())) {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "&7Your item pickup is already disabled!!"));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +
+                                ConfigManager.getInstance().getString("ItemPickUpIsAlreadyDisabled")));
                         player.closeInventory();
                         return;
                     }
 
                     itemPickUpPlayer.add(player.getName());
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "&7You have disabled item pickup!"));
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +
+                            ConfigManager.getInstance().getString("ItemPickUpIsDisabled")));
                     player.closeInventory();
                 }
             }
@@ -58,13 +60,15 @@ public class ItemPickUpSetting implements Listener {
                     }
 
                     if (!itemPickUpPlayer.contains(player.getName())) {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "&7Your item pickup is already enabled!!"));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +
+                                ConfigManager.getInstance().getString("ItemPickUpIsAlreadyEnabled")));
                         player.closeInventory();
                         return;
                     }
 
                     itemPickUpPlayer.remove(player.getName());
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "&7You have enabled item pickup!"));
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +
+                            ConfigManager.getInstance().getString("ItemPickUpIsEnabled")));
                     player.closeInventory();
                 }
             }

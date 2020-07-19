@@ -27,10 +27,12 @@ public class SpectateMode implements Listener {
                     }
 
                     if (player.getGameMode() == GameMode.SPECTATOR) {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "&7You're already in Spectator Mode!!"));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +
+                                ConfigManager.getInstance().getString("SpectatorModeAlreadyEnabled")));
                         return;
                     }
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "&7You have enabled Spectator Mode!"));
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +
+                            ConfigManager.getInstance().getString("SpectatorModeEnabled")));
                     player.setGameMode(GameMode.SPECTATOR);
                     player.closeInventory();
                 }
@@ -47,16 +49,19 @@ public class SpectateMode implements Listener {
                 if (name.equalsIgnoreCase(ChatColor.RED + "Disable Spectator Mode")) {
                     e.setCancelled(true);
                     if (!player.hasPermission("minealert.spectate")) {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "&cYou don't have enough permission to use this option!"));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +
+                                "&cYou don't have enough permission to use this option!"));
                         player.closeInventory();
                         return;
                     }
 
                     if (player.getGameMode() == GameMode.SURVIVAL) {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "&7You're not in Spectator Mode!!"));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +
+                                ConfigManager.getInstance().getString("SpectatorModeAlreadyDisabled")));
                         return;
                     }
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "&7You have disable Spectator Mode!"));
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +
+                            ConfigManager.getInstance().getString("SpectatorModeDisabled")));
                     player.setGameMode(GameMode.SURVIVAL);
                     player.closeInventory();
                 }

@@ -26,13 +26,15 @@ public class NightVision implements Listener {
                         return;
                     }
 
-                    if(player.hasPotionEffect(PotionEffectType.NIGHT_VISION)){
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "&7You already have Night Vision!"));
+                    if (player.hasPotionEffect(PotionEffectType.NIGHT_VISION)) {
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +
+                                ConfigManager.getInstance().getString("NightVisionAlreadyEnabled")));
                         return;
                     }
 
                     player.addPotionEffect(PotionEffectType.NIGHT_VISION.createEffect(Integer.MAX_VALUE, 2));
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "&7You have enabled Night Vision!"));
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +
+                            ConfigManager.getInstance().getString("NightVisionEnabled")));
                     player.closeInventory();
                 }
             }
@@ -52,13 +54,15 @@ public class NightVision implements Listener {
                         return;
                     }
 
-                    if(!player.hasPotionEffect(PotionEffectType.NIGHT_VISION)){
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "&7You don't have Night Vision!"));
+                    if (!player.hasPotionEffect(PotionEffectType.NIGHT_VISION)) {
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +
+                                ConfigManager.getInstance().getString("NightVisionAlreadyDisabled")));
                         return;
                     }
 
                     player.removePotionEffect(PotionEffectType.NIGHT_VISION);
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "&7You have cleared your Night Vision effect!"));
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +
+                            ConfigManager.getInstance().getString("NightVisionDisabled")));
                     player.closeInventory();
                 }
             }

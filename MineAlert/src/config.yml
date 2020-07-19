@@ -25,6 +25,20 @@ MineAlertMinedRedstone: "&e%time% &6%player% &7has mined a &cRedstone &7[&e%amou
 MineAlertMinedDiamond: "&e%time% &6%player% &7has mined a &bDiamond &7[&e%amount%x&7]"
 MineAlertMinedEmerald: "&e%time% &6%player% &7has mined an &aEmerald &7[&e%amount%x&7]"
 MineAlertMinedSpawners: "&e%time% &6%player% &7has mined a &e%mobtype% &7Spawner &7[&e%amount%x&7]"
+#Mine Alert Settings Messages
+ItemPickUpIsAlreadyDisabled: "&7Your item pickup is already disabled!"
+ItemPickUpIsDisabled: "&7You have disabled item pickup!"
+ItemPickUpIsAlreadyEnabled: "&7Your item pickup is already enabled!"
+ItemPickUpIsEnabled: "&7You have enabled item pickup!"
+NightVisionAlreadyEnabled: "&7You already have Night Vision!"
+NightVisionEnabled: "&7You have enabled Night Vision!"
+NightVisionAlreadyDisabled:  "&7You don't have Night Vision!"
+NightVisionDisabled: "&7You have cleared your Night Vision effect!"
+SpectatorModeAlreadyEnabled: "&7You're already in Spectator Mode!"
+SpectatorModeEnabled: "&7You have enabled Spectator Mode!"
+SpectatorModeAlreadyDisabled: "&7You're not in Spectator Mode!"
+SpectatorModeDisabled: "&7You have disable Spectator Mode!"
+
 #MineAlert Interval
 #Here you can set the interval for how long it'll take for the data types to clear!
 Interval: 150
