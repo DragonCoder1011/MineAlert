@@ -1,0 +1,74 @@
+package com.minealert.listener.block;
+
+import com.minealert.alert.types.*;
+import com.minealert.config.ConfigManager;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.block.CreatureSpawner;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+
+import java.util.List;
+
+public class BlockBreak implements Listener {
+
+    @EventHandler
+    public void onMine(BlockBreakEvent e) {
+        Player miner = e.getPlayer();
+
+        //Checks for players that are whitelisted and won't be flagged for mining
+        List<String> whiteList = ConfigManager.getInstance().getStringList("Whitelisted");
+        if (whiteList.contains(miner.getName())) {
+            return;
+        }
+
+        Block block = e.getBlock();
+        Material type = block.getType();
+        switch (type) {
+            //Called when someone mines coal ore.
+            case COAL_ORE:
+                CoalAlert.getInstance().call(miner);
+                break;
+            //Called when someone mines iron ore.
+            case IRON_ORE:
+                IronAlert.getInstance().call(miner);
+                break;
+            //Called when someone mines gold ore.
+            case GOLD_ORE:
+                GoldAlert.getInstance().call(miner);
+                break;
+            //Called when someone mines lapis ore.
+            case LAPIS_ORE:
+                LapisAlert.getInstance().call(miner);
+                break;
+            //Called when someone mines redstone ore.
+            case REDSTONE_ORE:
+                RedstoneAlert.getInstance().call(miner);
+                break;
+            //Called when someone mines diamond ore.
+            case DIAMOND_ORE:
+                DiamondAlert.getInstance().call(miner);
+                break;
+            //Called when someone mines emerald ore.
+            case EMERALD_ORE:
+                EmeraldAlert.getInstance().call(miner);
+                break;
+            //Called when someone mines a spawner.
+            case SPAWNER:
+                EntityType entityType = ((CreatureSpawner) block.getState()).getSpawnedType();
+                if (entityType == EntityType.SKELETON || entityType == EntityType.ZOMBIE || entityType == EntityType.BLAZE ||
+                        entityType == EntityType.CAVE_SPIDER || entityType == EntityType.SPIDER) {
+                    SpawnerAlert.getInstance().setType(entityType.getName());
+                    SpawnerAlert.getInstance().call(miner);
+                }
+                break;
+
+            default:
+                break;
+
+        }
+    }
+}

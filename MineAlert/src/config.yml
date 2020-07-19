@@ -1,0 +1,34 @@
+#Alert Notifications:
+#Here you can set how many ores or spawners have to be mined to trigger these notifications!
+CoalOre: 6
+IronOre: 9
+GoldOre: 5
+LapisOre: 6
+RedstoneOre: 8
+DiamondOre: 5
+EmeraldOre: 5
+#Triggered when Zombie, Spider, Cave Spider, and Skeleton spawners are broken/
+Spawner: 3
+#Violation Amounts
+#Here you can set the amount of violations a player has to have before they are removed from the notification data type.
+#Messages
+#Here you can configure Mine Alert Messages
+MineAlertPrefix: "&7[&aMA&7] "
+MineAlertEnabled: "&7You have &aEnabled &eMine Alert&7!"
+MineAlertDisabled: "&7You have &cDisabled &eMine Alert&7!"
+#Mine Alert Notification Messages
+MineAlertMinedCoal: "&e%time% &6%player% &7has mined &0Coal &7[&e%amount%x&7]"
+MineAlertMinedIron: "&e%time% &6%player% &7has mined &8Iron &7[&e%amount%x&7]"
+MineAlertMinedGold: "&e%time% &6%player% &7has mined &6Gold &7[&e%amount%x&7]"
+MineAlertMinedLapis: "&e%time% &6%player% &7has mined a &3Lapis &7[&e%amount%x&7]"
+MineAlertMinedRedstone: "&e%time% &6%player% &7has mined a &cRedstone &7[&e%amount%x&7]"
+MineAlertMinedDiamond: "&e%time% &6%player% &7has mined a &bDiamond &7[&e%amount%x&7]"
+MineAlertMinedEmerald: "&e%time% &6%player% &7has mined an &aEmerald &7[&e%amount%x&7]"
+MineAlertMinedSpawners: "&e%time% &6%player% &7has mined a &e%mobtype% &7Spawner &7[&e%amount%x&7]"
+#MineAlert Interval
+#Here you can set the interval for how long it'll take for the data types to clear!
+Interval: 150
+#Whitelist
+#Here you can whitelist players that won't set off any alerts!
+Whitelisted:
+  - "Nose"
