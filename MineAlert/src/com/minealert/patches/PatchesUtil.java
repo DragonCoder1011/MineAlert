@@ -28,14 +28,8 @@ public class PatchesUtil {
         return blockLocations.contains(location);
     }
 
-    /*
-
-    @Using this to prevent storage/memory issues!
-    @Block location clears on the interval!
-
-     */
-    public synchronized void emptyLocations() {
-        if (blockLocations.isEmpty()) return;
-        blockLocations.clear();
+    public void removeBlockLocation(Location location) {
+        if (!blockLocations.contains(location)) return;
+        blockLocations.remove(location);
     }
 }

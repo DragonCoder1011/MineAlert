@@ -32,30 +32,37 @@ public class BlockBreak implements Listener {
         switch (type) {
             //Called when someone mines coal ore.
             case COAL_ORE:
+                PatchesUtil.getInstance().removeBlockLocation(block.getLocation());
                 CoalAlert.getInstance().call(miner);
                 break;
             //Called when someone mines iron ore.
             case IRON_ORE:
+                PatchesUtil.getInstance().removeBlockLocation(block.getLocation());
                 IronAlert.getInstance().call(miner);
                 break;
             //Called when someone mines gold ore.
             case GOLD_ORE:
+                PatchesUtil.getInstance().removeBlockLocation(block.getLocation());
                 GoldAlert.getInstance().call(miner);
                 break;
             //Called when someone mines lapis ore.
             case LAPIS_ORE:
+                PatchesUtil.getInstance().removeBlockLocation(block.getLocation());
                 LapisAlert.getInstance().call(miner);
                 break;
             //Called when someone mines redstone ore.
             case REDSTONE_ORE:
+                PatchesUtil.getInstance().removeBlockLocation(block.getLocation());
                 RedstoneAlert.getInstance().call(miner);
                 break;
             //Called when someone mines diamond ore.
             case DIAMOND_ORE:
+                PatchesUtil.getInstance().removeBlockLocation(block.getLocation());
                 DiamondAlert.getInstance().call(miner);
                 break;
             //Called when someone mines emerald ore.
             case EMERALD_ORE:
+                PatchesUtil.getInstance().removeBlockLocation(block.getLocation());
                 EmeraldAlert.getInstance().call(miner);
                 break;
             //Called when someone mines a spawner.
@@ -64,6 +71,7 @@ public class BlockBreak implements Listener {
                 if (entityType == EntityType.SKELETON || entityType == EntityType.ZOMBIE || entityType == EntityType.BLAZE ||
                         entityType == EntityType.CAVE_SPIDER || entityType == EntityType.SPIDER) {
                     SpawnerAlert.getInstance().setType(entityType.getName());
+                    PatchesUtil.getInstance().removeBlockLocation(block.getLocation());
                     SpawnerAlert.getInstance().call(miner);
                 }
                 break;

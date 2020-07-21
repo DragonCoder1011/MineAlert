@@ -35,7 +35,6 @@ public class MineAlert extends JavaPlugin {
             interval--;
             if (interval <= 0) {
                 resetDataTypes();
-                PatchesUtil.getInstance().emptyLocations();
                 interval = ConfigManager.getInstance().getInteger("Interval");
             }
         }, 20, 20);
