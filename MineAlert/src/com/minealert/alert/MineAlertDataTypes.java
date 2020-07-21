@@ -8,8 +8,6 @@ import java.util.List;
 
 public class MineAlertDataTypes {
 
-    public static List<String> receiver = new ArrayList<>();
-
     public static Map<String, Integer> coalMined = Maps.newConcurrentMap();
 
     public static Map<String, Integer> ironMined = Maps.newConcurrentMap();

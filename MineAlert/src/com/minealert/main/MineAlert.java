@@ -5,7 +5,7 @@ import com.minealert.commands.MineAlertCommands;
 import com.minealert.config.ConfigManager;
 import com.minealert.listener.block.BlockBreak;
 import com.minealert.listener.inventory.*;
-import com.minealert.listener.join.ConnectingListeners;
+import com.minealert.listener.connection.ConnectingListeners;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandMap;
 import org.bukkit.command.defaults.BukkitCommand;
@@ -92,9 +92,6 @@ public class MineAlert extends JavaPlugin {
 
         for (Player all : Bukkit.getOnlinePlayers()) {
             addToDataTypes(all);
-        }
-        if (MineAlertDataTypes.receiver.isEmpty()) {
-            return;
         }
     }
 

@@ -99,7 +99,7 @@ public class MineAlertCommands extends BukkitCommand {
                 return true;
             }
 
-            InspectInventory.getInstance().define(target, player).register();
+            InspectInventory.getInstance().define(target, player);
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "&7You have opened the inspect menu!"));
             return true;
         }
@@ -110,7 +110,7 @@ public class MineAlertCommands extends BukkitCommand {
                 return true;
             }
 
-            SettingsInventory.getInstance().define(player).register();
+            SettingsInventory.getInstance().define(player);
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "&7You have opened the settings menu!"));
         }
 

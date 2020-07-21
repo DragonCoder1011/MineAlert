@@ -31,6 +31,7 @@ public class InspectInventory implements InterfaceInventory {
     public InspectInventory define(Player targetPlayer, Player inspectorPlayer){
         this.player = targetPlayer;
         this.inspector = inspectorPlayer;
+        register();
         return this;
     }
 

@@ -24,3 +24,4 @@ public class ConfigManager {
         return MineAlert.plugin.getConfig().getStringList(path);
     }
 }
+

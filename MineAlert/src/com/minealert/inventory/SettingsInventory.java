@@ -26,6 +26,7 @@ public class SettingsInventory implements InterfaceInventory {
 
     public SettingsInventory define(Player player) {
         this.player = player;
+        register();
         return this;
     }
 

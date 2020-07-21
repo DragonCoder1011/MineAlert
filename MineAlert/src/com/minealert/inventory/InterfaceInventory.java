@@ -1,7 +1,5 @@
 package com.minealert.inventory;
 
-import org.bukkit.entity.Player;
-
 public interface InterfaceInventory {
 
     void create();

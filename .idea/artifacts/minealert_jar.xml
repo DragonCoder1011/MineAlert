@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="minealert:jar">
-    <output-path>$USER_HOME$/Desktop/1.15 Testing</output-path>
+    <output-path>$USER_HOME$/Desktop/1.15 Testing/plugins</output-path>
     <root id="archive" name="minealert.jar">
       <element id="module-output" name="minealert" />
     </root>

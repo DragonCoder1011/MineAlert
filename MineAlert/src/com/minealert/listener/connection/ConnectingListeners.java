@@ -1,4 +1,4 @@
-package com.minealert.listener.join;
+package com.minealert.listener.connection;
 
 import com.minealert.alert.MineAlertDataTypes;
 import com.minealert.main.MineAlert;

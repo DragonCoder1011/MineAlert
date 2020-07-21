@@ -12,8 +12,8 @@ import java.time.format.DateTimeFormatter;
 public class GoldAlert {
 
     private static GoldAlert instance;
-    private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
-    private LocalDateTime now = LocalDateTime.now();
+    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+    private final LocalDateTime now = LocalDateTime.now();
 
     private GoldAlert(){
 
