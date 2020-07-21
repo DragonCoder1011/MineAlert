@@ -2,6 +2,7 @@ package com.minealert.listener.block;
 
 import com.minealert.alert.types.*;
 import com.minealert.config.ConfigManager;
+import com.minealert.patches.PatchesUtil;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.CreatureSpawner;
@@ -26,6 +27,7 @@ public class BlockBreak implements Listener {
         }
 
         Block block = e.getBlock();
+        if (PatchesUtil.getInstance().containsLocation(block.getLocation())) return;
         Material type = block.getType();
         switch (type) {
             //Called when someone mines coal ore.

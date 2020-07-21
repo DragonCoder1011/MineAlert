@@ -4,12 +4,15 @@ import com.minealert.alert.MineAlertDataTypes;
 import com.minealert.commands.MineAlertCommands;
 import com.minealert.config.ConfigManager;
 import com.minealert.listener.block.BlockBreak;
+import com.minealert.listener.block.BlockPlace;
 import com.minealert.listener.inventory.*;
 import com.minealert.listener.connection.ConnectingListeners;
+import com.minealert.patches.PatchesUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandMap;
 import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -28,16 +31,14 @@ public class MineAlert extends JavaPlugin {
         registerCommands();
         registerListeners();
         registerConfig();
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                interval--;
-                if (interval <= 0) {
-                    resetDataTypes();
-                    interval = ConfigManager.getInstance().getInteger("Interval");
-                }
+        Bukkit.getScheduler().runTaskTimerAsynchronously(plugin, () -> {
+            interval--;
+            if (interval <= 0) {
+                resetDataTypes();
+                PatchesUtil.getInstance().emptyLocations();
+                interval = ConfigManager.getInstance().getInteger("Interval");
             }
-        }.runTaskTimerAsynchronously(this, 20, 20);
+        }, 20, 20);
     }
 
     public void onDisable() {
@@ -50,14 +51,20 @@ public class MineAlert extends JavaPlugin {
     }
 
     private void registerListeners() {
-        PluginManager pm = Bukkit.getPluginManager();
-        pm.registerEvents(new BlockBreak(), this);
-        pm.registerEvents(new ConnectingListeners(), this);
-        pm.registerEvents(new CloseInventory(), this);
-        pm.registerEvents(new CancelInventoryClick(), this);
-        pm.registerEvents(new ItemPickUpSetting(), this);
-        pm.registerEvents(new NightVision(), this);
-        pm.registerEvents(new SpectateMode(), this);
+        addListener(new BlockBreak(),
+                new BlockPlace(),
+                new ConnectingListeners(),
+                new CloseInventory(),
+                new CancelInventoryClick(),
+                new ItemPickUpSetting(),
+                new NightVision(),
+                new SpectateMode());
+    }
+
+    private void addListener(Listener... listeners) {
+        for (Listener listener : listeners) {
+            Bukkit.getPluginManager().registerEvents(listener, this);
+        }
     }
 
     private void registerConfig() {
@@ -113,7 +120,7 @@ public class MineAlert extends JavaPlugin {
         }
     }
 
-    public static void removeFromDataTypes(Player player){
+    public static void removeFromDataTypes(Player player) {
         boolean check = MineAlertDataTypes.coalMined.containsKey(player.getName()) &&
                 MineAlertDataTypes.ironMined.containsKey(player.getName()) && MineAlertDataTypes.goldMined.containsKey(player.getName()) &&
                 MineAlertDataTypes.lapisMined.containsKey(player.getName()) && MineAlertDataTypes.redstoneMined.containsKey(player.getName()) &&
